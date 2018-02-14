@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -21,5 +21,5 @@ public class User
 
     private String password;
 
-    private List<LayoutSettings> layoutSettings;
+    private Set<LayoutSettings> layoutSettings;
 }
