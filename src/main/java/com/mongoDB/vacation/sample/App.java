@@ -87,6 +87,13 @@ public class App {
     }
 
 
+    @PutMapping(value = "/users/{id}")
+    public void updateUser(@RequestBody String data, @PathVariable("id") String id) {
+        DBObject query = dbCollection.findOne(new BasicDBObject().append("_id", id));
+        DBObject update = BasicDBObject.parse(data);
+        dbCollection.findAndModify(query, update);
+    }
+
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);
     }
