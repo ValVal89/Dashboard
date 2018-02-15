@@ -1,14 +1,10 @@
 package com.mongoDB.vacation.sample;
 
-import com.mongoDB.vacation.sample.model.LayoutSettings;
-import com.mongoDB.vacation.sample.model.User;
 import com.mongodb.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.data.mongodb.MongoDbFactory;
@@ -19,9 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.UnknownHostException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @SpringBootApplication
 @RestController
@@ -86,8 +80,10 @@ public class App {
     }
 
     @PostMapping(value = "/users")
-    public void addUser(@RequestBody User user) throws UnknownHostException {
-       mongoOperations().save(user, "users");
+    public DBObject addUser(@RequestBody String data) {
+       //mongoOperations().save(user, "users");
+        dbCollection.insert(BasicDBObject.parse(data));
+        return BasicDBObject.parse(data);
     }
 
 
