@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
+@CrossOrigin(origins = "http://localhost:4211")
 @RestController
 public class App {
 
